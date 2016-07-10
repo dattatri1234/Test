@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -7,8 +9,9 @@ public class Hello {
 	public static void main(String[] args) {
 		AutomationReadProperties prop = new AutomationReadProperties();
 		WebDriver driver = new FirefoxDriver();
-		driver.get("https://justrechargeit.com/");
+		driver.get("https://justrechargeit.com");
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(prop.getProperty("home.signin"))).click();
 		driver.findElement(By.xpath(prop.getProperty("login.username"))).sendKeys("Anil.Shirole.jy@gmail.com");
 		driver.findElement(By.xpath(prop.getProperty("login.password"))).sendKeys("123456");
